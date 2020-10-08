@@ -38,7 +38,13 @@ public class DemoServiceImpl implements DemoService {
 	@Override
 	public DemoEntity modifyReservation(DemoEntity reservation) {
 		// TODO Auto-generated method stub
-		return null;
+		if(ReservationRepo.findById(reservation.getReservation_no()).isPresent())
+		{
+			throw new ReservationAlreadyPresentException("Reservation with reservation_no:"+reservation.getReservation_no()+"is already there!!");
+		}
+		ReservationRepo.save(reservation);
+		return reservation;
+	}
 	}
 
 	@Override
