@@ -45,4 +45,10 @@ public class DemoController {
 		return reservationservice.viewAllReservation();
 	}
 	
+	@PutMapping("/modifyReservation")
+	public void modifyReservation(@RequestBody ReservationEntity reservation)
+	{
+		reservationservice.modifyReservation(reservation);
+	}
+	
 }
